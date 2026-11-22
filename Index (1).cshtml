@@ -1,0 +1,84 @@
+﻿@model IEnumerable<InstructorInformationSystemm.Models.Instructor>
+
+@{
+    ViewData["Title"] = "Instructor List";
+}
+
+<div class="container mt-5">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <div>
+            <h2>Instructor Information</h2>
+            <p class="text-muted">Manage instructor records.</p>
+        </div>
+
+        <a asp-controller="Instructor"
+           asp-action="Create"
+           class="btn btn-primary">
+            Add Instructor
+        </a>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-bordered table-striped align-middle">
+            <thead class="table-dark">
+                <tr>
+                    <th>Full Name</th>
+                    <th>Age</th>
+                    <th>Designation</th>
+                    <th>Major</th>
+                    <th>Email Address</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @if (Model != null && Model.Any())
+                {
+                    @foreach (var instructor in Model)
+                    {
+                        <tr>
+                            <td>@instructor.FullName</td>
+                            <td>@instructor.Age</td>
+                            <td>@instructor.Designation</td>
+                            <td>@instructor.Major</td>
+                            <td>@instructor.EmailAddress</td>
+                            <td>
+                                <a asp-action="Details"
+                                   asp-route-id="@instructor.Id"
+                                   class="btn btn-info btn-sm">
+                                    Details
+                                </a>
+
+                                <a asp-action="Edit"
+                                   asp-route-id="@instructor.Id"
+                                   class="btn btn-warning btn-sm">
+                                    Edit
+                                </a>
+
+                                <a asp-action="Delete"
+                                   asp-route-id="@instructor.Id"
+                                   class="btn btn-danger btn-sm">
+                                    Delete
+                                </a>
+                            </td>
+                        </tr>
+                    }
+                }
+                else
+                {
+                    <tr>
+                        <td colspan="6" class="text-center">
+                            No instructor records found.
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+    <a asp-controller="Account"
+       asp-action="Dashboard"
+       class="btn btn-secondary">
+        Back to Dashboard
+    </a>
+</div>

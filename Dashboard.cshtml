@@ -1,0 +1,45 @@
+﻿@{
+    ViewData["Title"] = "Dashboard";
+}
+
+<div class="container mt-5">
+    <div class="card shadow-sm">
+        <div class="card-body p-4">
+            <h2>Instructor Dashboard</h2>
+
+            <p class="mt-3">
+                Welcome,
+                <strong>@(TempData["InstructorName"] ?? "Instructor")!</strong>
+            </p>
+
+            <p>
+                Welcome to the Instructor Information System.
+                You can manage instructor information using the option below.
+            </p>
+
+            <hr />
+
+            <h5>Instructor Management</h5>
+
+            <p>
+                View, add, edit, and delete instructor records.
+            </p>
+
+            <a asp-controller="Instructor"
+               asp-action="Index"
+               class="btn btn-primary">
+                Manage Instructors
+            </a>
+
+            <form asp-controller="Account"
+                  asp-action="Logout"
+                  method="post"
+                  class="mt-3">
+                <button type="submit"
+                        class="btn btn-outline-secondary">
+                    Logout
+                </button>
+            </form>
+        </div>
+    </div>
+</div>

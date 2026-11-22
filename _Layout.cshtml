@@ -1,0 +1,65 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>@ViewData["Title"] - Instructor Information System</title>
+
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    @await RenderSectionAsync("Styles", required: false)
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-auth">
+            <div class="container">
+
+                <a class="navbar-brand"
+                   asp-controller="Account"
+                   asp-action="Login">
+
+                    <span class="brand-icon">✿</span>
+                    <span>Instructor System</span>
+                </a>
+
+                @{
+                    string? currentAction =
+                        ViewContext.RouteData.Values["action"]?.ToString();
+
+                    string loginClass = currentAction == "Login"
+                        ? "auth-nav-register"
+                        : "auth-nav-link";
+
+                    string registerClass = currentAction == "Register"
+                        ? "auth-nav-register"
+                        : "auth-nav-link";
+                }
+
+              
+
+            </div>
+        </nav>
+    </header>
+
+    <main class="container auth-main">
+        @RenderBody()
+    </main>
+
+    <footer class="auth-footer">
+        <div class="container">
+            <p>
+                &copy; @DateTime.Now.Year Instructor Information System
+                <span class="footer-heart">♥</span>
+            </p>
+        </div>
+    </footer>
+
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

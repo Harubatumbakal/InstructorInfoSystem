@@ -1,0 +1,53 @@
+﻿@model InstructorInformationSystemm.Models.Instructor
+
+@{
+    ViewData["Title"] = "Instructor Details";
+}
+
+<div class="container mt-5" style="max-width: 700px;">
+    <div class="card shadow-sm">
+        <div class="card-body p-4">
+            <h2>Instructor Details</h2>
+            <hr />
+
+            <dl class="row">
+                <dt class="col-sm-4">Full Name</dt>
+                <dd class="col-sm-8">@Model.FullName</dd>
+
+                <dt class="col-sm-4">Age</dt>
+                <dd class="col-sm-8">@Model.Age</dd>
+
+                <dt class="col-sm-4">Address</dt>
+                <dd class="col-sm-8">@Model.Address</dd>
+
+                <dt class="col-sm-4">Designation</dt>
+                <dd class="col-sm-8">@Model.Designation</dd>
+
+                <dt class="col-sm-4">Gender</dt>
+                <dd class="col-sm-8">@Model.Gender</dd>
+
+                <dt class="col-sm-4">Major</dt>
+                <dd class="col-sm-8">@Model.Major</dd>
+
+                <dt class="col-sm-4">Bachelor Degree</dt>
+                <dd class="col-sm-8">@Model.BachelorDegree</dd>
+
+                <dt class="col-sm-4">Email Address</dt>
+                <dd class="col-sm-8">@Model.EmailAddress</dd>
+
+                <dt class="col-sm-4">Contact Number</dt>
+                <dd class="col-sm-8">@Model.ContactNumber</dd>
+            </dl>
+
+            <a asp-action="Edit"
+               asp-route-id="@Model.Id"
+               class="btn btn-warning">
+                Edit
+            </a>
+
+            <a asp-action="Index" class="btn btn-secondary">
+                Back to List
+            </a>
+        </div>
+    </div>
+</div>

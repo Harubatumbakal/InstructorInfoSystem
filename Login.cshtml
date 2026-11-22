@@ -1,0 +1,63 @@
+﻿@model InstructorInformationSystemm.Models.LoginViewModel
+
+@{
+    ViewData["Title"] = "Login";
+}
+
+<div class="auth-page">
+    <div class="auth-card">
+        <div class="auth-heading">
+            <div class="auth-icon">✿</div>
+            <h1>Welcome!</h1>
+            <p>Sign in to your Instructor Information System account.</p>
+        </div>
+
+        @if (TempData["SuccessMessage"] != null)
+        {
+            <div class="alert alert-success">
+                @TempData["SuccessMessage"]
+            </div>
+        }
+
+        <form asp-controller="Account" asp-action="Login" method="post">
+            @Html.AntiForgeryToken()
+
+            <div asp-validation-summary="ModelOnly"
+                 class="text-danger validation-summary mb-3">
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Email" class="form-label"></label>
+                <input asp-for="Email"
+                       class="form-control"
+                       placeholder="Enter your email address"
+                       autocomplete="email" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+
+            <div class="mb-4">
+                <label asp-for="Password" class="form-label"></label>
+                <input asp-for="Password"
+                       class="form-control"
+                       placeholder="Enter your password"
+                       autocomplete="current-password" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+
+            <button type="submit" class="btn auth-submit w-100">
+                Login
+            </button>
+
+            <p class="auth-switch">
+                Don't have an account?
+                <a asp-controller="Account" asp-action="Register">
+                    Register here
+                </a>
+            </p>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
